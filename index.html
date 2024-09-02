@@ -1,9 +1,10 @@
 <html>
 <head>
 <title>paint the wall.</title>
-  <meta name="title" content="Pixel4Jesus.com/paint">
+  <meta name="title" content="paint the wall">
   <meta name="description" content="paint the wall.">
   <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA7SURBVDhPYxQSEmIgBYA0WFhYQHlI4MSJE1jFmaA00YBkDaT7wcvLC8rE7W5k8cHoh9F4IAKQqIGBAQCLWhZphVJUmwAAAABJRU5ErkJggg==" />
+  <meta charset="UTF-8">
 <style>
 img {
   image-rendering: pixelated;
@@ -43,6 +44,19 @@ button {
   padding: 10px;
 }
 
+button.shop {
+  color: black;
+  background-color: #fff;
+  padding: 3px;
+  display: inline;
+  font-size: 15px;
+}
+
+button.shop:hover:enabled {
+  background-color: #f7f7f7;
+  cursor: pointer;
+  padding: 3px;
+}
 
 button:hover:enabled {
   background-color: #e6e6e6;
@@ -51,7 +65,7 @@ button:hover:enabled {
 }
 
 button:disabled {
-  background-color: #5c5c5c;
+  background-color: #a1a1a1;
   color: #363636;
   cursor: context-menu;
   border: 1px solid #000000;
@@ -68,19 +82,13 @@ button:disabled {
   opacity: 0;
   transition: opacity 1s;
 }
-
 </style>
   <body>
 
 <center>
 <div id="content">
 <h2 style="font-weight:normal;">paint the wall.
-<span style="display: none;" id="countformat">(<span style="display: none;" id="count">1</span>)
-
-<div id="motivationquotesID" style="display: none; border-radius: 15px; height: auto; width: 700px; padding: 20px; text-align: left; background: rgba(0, 0, 0, 0.7); color: white; text-shadow: blue 2px 2px 2px;">
-
-<i id="motivationquotes" style="text-shadow: none; font-size: 23px;">motivation</i><br>
-</div></h2>
+<span style="display: none;" id="countformat">(<span style="display: none;" id="count">0</span>)</h2>
 <img style="background-color: #cfcfcf;" id="wall" height="138px" width="290px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAAfCAYAAAC4c6DCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACeSURBVGhD7ZQxDsAgDMRC///n1ikZGLqwIERtCRHptlOcFhE379e8JUD+n7TWjs+vmn+NJUCuiTcBX2rs7ODo6lwdwBIg18KbwJt2aOSEXB3AEiDXxJuALzV2dnB0da4OYAmQa+FN4E07NHJCrg5gCZBr4k3Alxo7Ozi6OlcHsATItfAm8KYdGjkhVwewBMg18SbgS42dHRxdnatDRDwUcxgmgLh+zQAAAABJRU5ErkJggg==">
 
 <br><br>
@@ -97,7 +105,6 @@ button:disabled {
 <span id="Chooseacolor">Choose a color.<br><br></span>
 <span style="display: none;" id="waittodry">Wait to dry:</span>
 <span style="display: none;" id="timer">0</span>
-
 </div>
 <hr style="border: none;" width="500px"></center>
 
@@ -109,18 +116,105 @@ button:disabled {
 <audio id="audio" loop>
 <source src="audio.mp3" type="audio/mp3">
 </audio>
-
 </div>
+
+<center>
+<button onClick="part2()" id="questionmark" style="color: #360000; font-size: 28px; display: none; font-family: times; border: none; background: none;"><b>?</b></button>
+
+<div id="upgradebox" style="overflow-x: hidden; overflow-y: scroll; font-family: times; display: none; padding: 3px; text-align: left; border: 1px solid #666666; height: 250px; width: 260px; background-color: #fff;" id="clickermenu">
+<center>upgrades</center>
+<br><hr style="border: none; height: 1px; background-color: #666666; margin:-10px"><br>
+
+
+<div style="padding: 5px; border-radius: 5px; font-size: 20px;">
+🧙‍ upgrade paint<br><i style="font-size:17px;">- cut total drying time in half</i><br>
+<button onClick="purchase('1')" class="shop">price:
+<b><span id="halftimePrice">1</span></b></button>	</span>
+</div>
+
+<div style="padding: 5px; border-radius: 5px; font-size: 20px;">
+☯️ persistence motivator<br><i style="font-size:17px;">- helps motivate your patience with inspirational quotes</i><br>
+<button id="2price" onClick="purchase('2')" class="shop">price:
+<b><span id="persistencePrice">1</span></b></button>	</span>
+</div>
+
+<div style="padding: 5px; border-radius: 5px; font-size: 20px;">
+🎰 drying entertainment<br><i style="font-size:17px;">- adds a minigame while drying</i><br>
+<button id="3price" onClick="purchase('3')" class="shop">price:
+<b><span id="entertainmentPrice">3</span></b></button>	</span>
+</div>
+
+<br><hr style="border: none; height: 1px; background-color: #666666; margin:-10px"><br>
+
+<center>paint the wall, by acedog3</center>
+</div>
+<br>
+
+
+<div id="motivationquotesID" style="display: none; border-radius: 15px; height: auto; width: 700px; padding: 20px; text-align: left; background: rgba(0, 0, 0, 0.7); color: white; text-shadow: blue 2px 2px 2px;">
+
+<i id="motivationquotes" style="text-shadow: none; font-size: 23px;">motivation</i><br>
+</div>
+
+<br>
+<iframe id="iframe" src="https://funhtml5games.com?embed=mariofps" style="display: none; width:640px;height:480px;border:none;" frameborder="0" scrolling="no"></iframe>
+<div style="display: none;" id="entertainment">
+<br><br>
+<button onClick="enableMinigame()" style="font-size: 12px; float" class="shop">enable minigame</button>
+<button onClick="toggleMuteAudio()" style="font-size: 12px; float" class="shop">mute/unmute paint</button>
+</div>
+
+</center>
+
+
 <script>
+document.getElementById("questionmark").style.display = "block";
+document.getElementById("2price").disabled = true;
+
+var halftimePrice = 1;
+var persistencePrice = 1;
+var entertainmentPrice = 3;
 video.volume = 0.0;
 audio.volume = 0.9;
 var timer = 0;
 var count = 0;
+var startdown = 21600; /*21600*/
+
+function purchase(itemNum) {
+if (itemNum === '1' && count >= halftimePrice) {
+  startdown = startdown / 2;
+  count -= halftimePrice;
+  document.getElementById("count").innerHTML = thousands_separators(count);
+  halftimePrice += 1;
+  document.getElementById("halftimePrice").innerHTML = thousands_separators(halftimePrice);
+}
+  
+if (itemNum === '2' && count >= persistencePrice) {
+  count -= persistencePrice;
+  document.getElementById("count").innerHTML = thousands_separators(count);
+  document.getElementById("2price").disabled = true;
+}
+
+if (itemNum === '3' && count >= entertainmentPrice) {
+  count -= entertainmentPrice;
+  document.getElementById("count").innerHTML = thousands_separators(count);
+  document.getElementById("3price").disabled = true;
+  }
+}
+
+function part2() {
+  document.getElementById("questionmark").style.display = "none";
+  document.getElementById("upgradebox").style.display = "block";
+  document.getElementById("countformat").style.display = "inline";
+  document.getElementById("count").style.display = "inline";
+  document.getElementById("count").innerHTML = thousands_separators(count);
+
+}
 
 function paint(color) {
 document.getElementById("wall").style.background = color;
 
-<!--   if (timer === 0) {-->
+  if (timer <= 0) {
   document.getElementById("1").disabled = true;document.getElementById("2").disabled = true;document.getElementById("3").disabled = true;document.getElementById("4").disabled = true;document.getElementById("5").disabled = true;document.getElementById("6").disabled = true;document.getElementById("7").disabled = true;
   document.getElementById("timer").innerHTML = thousands_separators(timer);
   document.getElementById("Chooseacolor").style.display = "none";
@@ -135,26 +229,31 @@ document.getElementById("wall").style.background = color;
   document.getElementById("content").style.textShadow = "blue 2px 2px 2px";
   document.getElementById("wall").style.boxShadow = "0px 0px 10px #262626";
 
-  startCountdown();
-  <!--}-->
+  document.getElementById("questionmark").style.display = "none";
+  document.getElementById("upgradebox").style.display = "none";
   
-    document.getElementById("motivationquotesID").style.display = "block";
+if (document.getElementById("3price").disabled === true) {
+  document.getElementById("entertainment").style.display = "block";
+}
+
+if (document.getElementById("2price").disabled === true) {
+  document.getElementById("motivationquotesID").style.display = "block";
   cycleQuotes();
 }
 
+  startCountdown(startdown);
+  }
+}
 
-
-
-
-function startCountdown() {
-let countdownDuration = 21600;
+function startCountdown(x) {
+var countdownDuration = x
   document.getElementById("timer").innerHTML = thousands_separators(countdownDuration);
   
-let interval = setInterval(() => {
+var interval = setInterval(() => {
   countdownDuration-= 1;
   document.getElementById("timer").innerHTML = thousands_separators(countdownDuration);
   
-if (countdownDuration === -1) {
+if (countdownDuration < 0) {
 clearInterval(interval);
 
   document.getElementById("timer").style.display = "none";
@@ -175,16 +274,37 @@ clearInterval(interval);
   document.getElementById("wall").style.filter = "brightness(70%)";
   document.getElementById("content").style.background = "rgba(255, 255, 255, .6)";
   document.getElementById("content").style.color = "black";
-  document.getElementById("content").style.textShadow = "black 0px 0px 0px";
+  document.getElementById("content").style.textShadow = 'none';
   document.getElementById("wall").style.boxShadow = "0px 0px 0px #333333";
+
+  document.getElementById("questionmark").style.display = "block";
+  document.getElementById("entertainment").style.display = "none"
+  document.getElementById("motivationquotesID").style.display = "none"
+  document.getElementById("iframe").style.display = "none"
 }
 }, 1000);
 }
 
+  function toggleMuteAudio() {
+    if (audio.volume === 0.9) {
+      audio.volume = 0.0;
+    } else {
+      audio.volume = 0.9;
+    }
+  }
 
+function toggleMuteGame() {
+  var iframe = document.getElementById("iframe");
+  if (iframe.volume === 1) {
+    iframe.volume = 0.0;
+  } else {
+    iframe.volume = 1;
+  }
+}
 
-
-
+function enableMinigame() {
+  document.getElementById("iframe").style.display = "block";
+}
 
 function thousands_separators(num) { var num_parts = num.toString().split(".");num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");return num_parts.join(".");}
 
