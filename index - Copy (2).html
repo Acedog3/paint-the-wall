@@ -1,0 +1,287 @@
+<html>
+<head>
+<title>paint the wall.</title>
+  <meta name="title" content="Pixel4Jesus.com/paint">
+  <meta name="description" content="paint the wall.">
+  <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA7SURBVDhPYxQSEmIgBYA0WFhYQHlI4MSJE1jFmaA00YBkDaT7wcvLC8rE7W5k8cHoh9F4IAKQqIGBAQCLWhZphVJUmwAAAABJRU5ErkJggg==" />
+<style>
+img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+#video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+  display: none;
+  background-attachment: fixed;
+}
+
+#content {
+  width: 600px;
+  padding: 10px;
+  border-radius: 24px;
+}
+
+button {
+  display: inline-block;
+  color: #212529;
+  text-align: center;
+  border: 1px solid transparent;
+  padding: 5px 6px;
+  line-height: 1;
+  color: black;
+  background-color: #ffffff;
+  border: 1px solid #767676;
+  padding: 10px;
+}
+
+
+button:hover:enabled {
+  background-color: #e6e6e6;
+  cursor: pointer;
+  padding: 10px 11px;
+}
+
+button:disabled {
+  background-color: #5c5c5c;
+  color: #363636;
+  cursor: context-menu;
+  border: 1px solid #000000;
+}
+
+@keyframes fade {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+#motivationquotes {
+  font-size: 25px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+</style>
+  <body>
+
+<center>
+<div id="content">
+<h2 style="font-weight:normal;">paint the wall.
+<span style="display: none;" id="countformat">(<span style="display: none;" id="count">1</span>)
+
+<div id="motivationquotesID" style="display: none; border-radius: 15px; height: auto; width: 700px; padding: 20px; text-align: left; background: rgba(0, 0, 0, 0.7); color: white; text-shadow: blue 2px 2px 2px;">
+
+<i id="motivationquotes" style="text-shadow: none; font-size: 23px;">motivation</i><br>
+</div></h2>
+<img style="background-color: #cfcfcf;" id="wall" height="138px" width="290px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAAfCAYAAAC4c6DCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACeSURBVGhD7ZQxDsAgDMRC///n1ikZGLqwIERtCRHptlOcFhE379e8JUD+n7TWjs+vmn+NJUCuiTcBX2rs7ODo6lwdwBIg18KbwJt2aOSEXB3AEiDXxJuALzV2dnB0da4OYAmQa+FN4E07NHJCrg5gCZBr4k3Alxo7Ozi6OlcHsATItfAm8KYdGjkhVwewBMg18SbgS42dHRxdnatDRDwUcxgmgLh+zQAAAABJRU5ErkJggg==">
+
+<br><br>
+<button id="1" onClick="paint('red')">red</button>
+<button id="2" onClick="paint('orange')">orange</button>
+<button id="3" onClick="paint('#fce803')">yellow</button>
+<button id="4" onClick="paint('#32a852')">green</button>
+<button id="5" onClick="paint('#4287f5')">blue</button>
+<button id="6" onClick="paint('#9c42f5')">purple</button>
+<button id="7" onClick="paint('#ffb0f2')">pink</button>
+
+<hr style="border: none;" width="500px">
+<div style="padding: 5px;" id="menu">
+<span id="Chooseacolor">Choose a color.<br><br></span>
+<span style="display: none;" id="waittodry">Wait to dry:</span>
+<span style="display: none;" id="timer">0</span>
+
+</div>
+<hr style="border: none;" width="500px"></center>
+
+
+<video playsinline loop mute id="video">
+<source src="rain.mp4" type="video/mp4">
+</video>
+	
+<audio id="audio" loop>
+<source src="audio.mp3" type="audio/mp3">
+</audio>
+
+</div>
+<script>
+video.volume = 0.0;
+audio.volume = 0.9;
+var timer = 0;
+var count = 0;
+
+function paint(color) {
+document.getElementById("wall").style.background = color;
+
+<!--   if (timer === 0) {-->
+  document.getElementById("1").disabled = true;document.getElementById("2").disabled = true;document.getElementById("3").disabled = true;document.getElementById("4").disabled = true;document.getElementById("5").disabled = true;document.getElementById("6").disabled = true;document.getElementById("7").disabled = true;
+  document.getElementById("timer").innerHTML = thousands_separators(timer);
+  document.getElementById("Chooseacolor").style.display = "none";
+  document.getElementById("timer").style.display = "block";
+  document.getElementById("waittodry").style.display = "block";
+  document.getElementById("video").style.display = "block";
+  video.play();
+  audio.play();
+  document.getElementById("wall").style.filter = "brightness(100%)";
+  document.getElementById("content").style.background = "rgba(0, 0, 0, .6)";
+  document.getElementById("content").style.color = "white";
+  document.getElementById("content").style.textShadow = "blue 2px 2px 2px";
+  document.getElementById("wall").style.boxShadow = "0px 0px 10px #262626";
+
+  startCountdown();
+  <!--}-->
+  
+    document.getElementById("motivationquotesID").style.display = "block";
+  cycleQuotes();
+}
+
+
+
+
+
+function startCountdown() {
+let countdownDuration = 21600;
+  document.getElementById("timer").innerHTML = thousands_separators(countdownDuration);
+  
+let interval = setInterval(() => {
+  countdownDuration-= 1;
+  document.getElementById("timer").innerHTML = thousands_separators(countdownDuration);
+  
+if (countdownDuration === -1) {
+clearInterval(interval);
+
+  document.getElementById("timer").style.display = "none";
+  document.getElementById("waittodry").style.display = "none";
+  document.getElementById("Chooseacolor").style.display = "block";
+  document.getElementById("1").disabled = false;document.getElementById("2").disabled = false;document.getElementById("3").disabled = false;document.getElementById("4").disabled = false;document.getElementById("5").disabled = false;document.getElementById("6").disabled = false;document.getElementById("7").disabled = false;
+
+  document.getElementById("video").style.display = "none";
+  video.pause();
+  audio.pause();
+  document.getElementById("audio").currentTime = 0;
+
+  count += 1;
+  document.getElementById("countformat").style.display = "inline";
+  document.getElementById("count").style.display = "inline";
+  document.getElementById("count").innerHTML = thousands_separators(count);
+
+  document.getElementById("wall").style.filter = "brightness(70%)";
+  document.getElementById("content").style.background = "rgba(255, 255, 255, .6)";
+  document.getElementById("content").style.color = "black";
+  document.getElementById("content").style.textShadow = "black 0px 0px 0px";
+  document.getElementById("wall").style.boxShadow = "0px 0px 0px #333333";
+}
+}, 1000);
+}
+
+
+
+
+
+
+function thousands_separators(num) { var num_parts = num.toString().split(".");num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");return num_parts.join(".");}
+
+const quotes = [
+  "The only way to do great work is to love what you do. - Steve Jobs",
+  "Be the change that you wish to see in the world. - Mahatma Gandhi",
+  "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+  "Life is a journey that must be traveled no matter how bad the roads and accommodations. - Oliver Goldsmith",
+  "The biggest adventure you can take is to live the life of your dreams. - Oprah Winfrey",
+  "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+  "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+  "Happiness is not something ready-made. It comes from your own actions. - Dalai Lama",
+  "The purpose of our lives is to be happy. - Dalai Lama",
+  "The best way to predict the future is to create it. - Peter Drucker",
+  "You miss 100% of the shots you don't take. - Wayne Gretzky",
+  "Believe you can and you're halfway there. - Theodore Roosevelt",
+  "We are what we repeatedly do. Excellence, then, is not an act but a habit. - Aristotle",
+  "I have not failed. I've just found 10,000 ways that won't work. - Thomas Edison",
+  "The only impossible journey is the one you never begin. - Tony Robbins",
+  "The only true wisdom is in knowing you know nothing. - Socrates",
+  "If you want to lift yourself up, lift up someone else. - Booker T. Washington",
+  "The true sign of intelligence is not knowledge but imagination. - Albert Einstein",
+  "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela",
+  "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+  "It does not matter how slowly you go as long as you do not stop. - Confucius",
+  "The art of being wise is the art of knowing what to overlook. - William James",
+  "In the middle of every difficulty lies opportunity. - Albert Einstein",
+  "The only person you are destined to become is the person you decide to be. - Ralph Waldo Emerson",
+  "A journey of a thousand miles begins with a single step. - Lao Tzu",
+  "The way to get started is to quit talking and begin doing. - Walt Disney",
+  "You can't go back and change the beginning, but you can start where you are and change the ending. - C.S. Lewis",
+  "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+  "It is never too late to be what you might have been. - George Eliot",
+  "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle. - Christian D. Larson",
+  "You are never too old to set another goal or to dream a new dream. - C.S. Lewis",
+  "The harder I work, the luckier I get. - Samuel Goldwyn",
+  "The only person you should try to be better than is the person you were yesterday. - Matty Mullins",
+  "If you can't fly, then run, if you can't run, then walk, if you can't walk, then crawl, but whatever you do, you have to keep moving forward. - Martin Luther King Jr.",
+  "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. - Steve Jobs",
+  "The only thing standing between you and your goal is the story you keep telling yourself as to why you can't achieve it. - Jordan Belfort",
+  "Life is really simple, but we insist on making it complicated. - Confucius",
+  "If you have a dream, don't just sit there. Gather courage to believe that you can succeed and leave no stone unturned to make it a reality. - Roopleen",
+  "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. - Albert Schweitzer",
+  "Don't be pushed around by the fears in your mind. Be led by the dreams in your heart. - Roy T. Bennett",
+  "The greatest mistake you can make in life is to continually fear you will make one. - Elbert Hubbard",
+  "Don't be afraid to give up the good to go for the great. - John D. Rockefeller",
+  "The past cannot be changed. The future is yet in your power. - Unknown",
+  "Your life does not get better by chance, it gets better by change. - Jim Rohn",
+  "The mind is everything. What you think you become. - Buddha",
+  "Life is short, and it's up to you to make it sweet. - Sarah Louise Delany",
+  "Keep your face always toward the sunshine—and shadows will fall behind you. - Walt Whitman",
+  "Life is like riding a bicycle. To keep your balance, you must keep moving. - Albert Einstein",
+  "The only way to do great work is to love what you do. - Steve Jobs",
+  "In the middle of every difficulty lies opportunity. - Albert Einstein"
+];
+
+
+const motivationQuotesElement = document.getElementById("motivationquotes");
+
+function cycleQuotes() {
+  let index = 0;
+
+  function updateQuote() {
+    motivationQuotesElement.style.opacity = 1;
+    motivationQuotesElement.innerHTML = quotes[index];
+    index = (index + 1) % quotes.length;
+
+    setTimeout(() => {
+      motivationQuotesElement.style.opacity = 0;
+      setTimeout(updateQuote, 1000); // Wait 1 second for the fade-out effect to complete
+    }, 9000); // Wait 9 seconds before starting the fade-out effect
+  }
+
+  updateQuote();
+}
+
+/*document.addEventListener("keydown", function (event) {
+    var keyword = "tripp";
+    if (count == 0 && timer == 0 && event.key.toLowerCase() === keyword.charAt(0)) {
+        var typedKeyword = keyword.charAt(0);
+        var tripptimer;
+        document.addEventListener("keydown", function (event) {
+            clearTimeout(tripptimer);
+            typedKeyword += event.key.toLowerCase();
+            tripptimer = setTimeout(function () {
+                typedKeyword = "";
+            }, 1000);
+            if (count == 0 && timer == 0 && typedKeyword === keyword) {
+                document.getElementById("countformat").style.display = "inline";
+                document.getElementById("count").style.display = "inline";
+                document.getElementById("count").innerHTML = thousands_separators(count);
+                document.getElementById("questionmark").style.display = "block";
+            }
+        });
+    }
+});*/
+
+</script>
+</body>
+</html>
